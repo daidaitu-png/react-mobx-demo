@@ -9,9 +9,10 @@ class CounterStore {
 		makeAutoObservable(this);
 	}
 	// 3.定义action函数（修改数据）
-	addCount() {
+	addCount = () => {
 		this.count++;
-	}
+	};
 }
 
-// 4.实例化 然后导出给react使用
+
+export { CounterStore };
