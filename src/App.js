@@ -1,19 +1,23 @@
-import { observer } from "mobx-react-lite";
-import { useStore } from "./store";
-import Todo from "./Todo";
+import { BrowserRouter, Link } from "react-router-dom";
+import { Routes, Route } from "react-router";
+import Home from "./Home";
+import About from "./About";
+import Login from "./Login";
 
 function App() {
-	const { counterStore, listStore } = useStore();
 	return (
 		<div className="App">
-			{counterStore.count}
-			<button onClick={counterStore.addCount}> + </button>
-			<br />
-			{listStore.list.join(" ")}
-			<button onClick={listStore.addList}>add Angular</button>
-			<Todo />
+			<BrowserRouter>
+				<Link to={"/"}>首页</Link>
+				<Link to={"/about"}>关于</Link>
+				<Routes>
+					<Route path="/:id" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }
 
-export default observer(App);
+export default App;
